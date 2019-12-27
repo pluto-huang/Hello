@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculate</title>
+	<style type="text/css">
+		label{
+			width: 130px;
+			float: left;
+			text-align: right;
+		}
+		.button{
+			width: 60px;
+			height: 40px;
+			margin:5px 2px;
+		}
+	</style>
+</head>
+<body bgcolor="#00ffff">
+	<h1 align="center">Simple Calculate using JS</h1>
+	<hr style="color: #990000">
+	<form  style="margin-left: 40%">
+	<p>
+		<label for="enter value1">Enter 1st value : </label>
+		<input type="number" id="v1">
+	</p>
+	<p>
+		<label for="enter value2">Enter 2nd value : </label>
+		<input type="number" id="v2">
+	</p>
+	<p>
+		<label for="result">Result : </label>
+		<input type="number" id="res">
+	</p>
+		<div style="margin-left: 4%">
+		<!-- 创建按钮，当点击按钮时调用函数，并将按钮的值传给函数 -->
+		<input type="button" class="button" value="+" onclick="cal('+')">
+		<input type="button" class="button" value="-" onclick="cal('-')">
+		<input type="button" class="button" value="*" onclick="cal('*')">
+		<input type="button" class="button" value="/" onclick="cal('/')"><br>
+		<input type="button" class="button" value="x^y" onclick="cal('x^y')">
+		<input type="button" class="button" value="x^(1/y)" onclick="cal('√')">
+		<input type="button" class="button" value="取余" onclick="cal('取余')">
+		<input type="button" class="button" value="x!" onclick="cal('x!')"><br>
+		<input type="button" class="button" value="sin" onclick="cal('sin')">
+		<input type="button" class="button" value="cos" onclick="cal('cos')">
+		<input type="button" class="button" value="e" onclick="cal('e')">
+		<input type="button" class="button" value="Π" onclick="cal('Π')"><br>
+		</div>
+	</form>
+	<hr style="color: #990000">
+	<script type="text/javascript">
+		function cal(symbol){
+			//得到数字一和数字二
+			var value1=document.getElementById('v1').value;
+			var value2=document.getElementById('v2').value;
+			var answer;
+			//使用switch语句判断进行的运算方法
+			switch(symbol){
+				case"+":answer=value1-(-value2);break;
+				case"-":answer=value1-value2;break;
+				case"*":answer=value1*value2;break;
+				case"/":answer=value1/value2;break;
+				case"x^y":
+				{
+						answer=Math.pow(value1,value2)
+				}
+				break;
+				case"√":
+				{
+						answer=Math.pow(value1,1/value2);
+				}
+				break;
+				case"取余":answer=value1%value2;break;
+				case"x!":				
+				{
+					if (value1>=0) {
+						var result=1;
+						for (var i =1; i < value1; i++) {
+							result=result*(i+1);
+						}
+						answer=result;
+					}
+				}
+				break;
+				case"sin":answer=Math.sin(value1);break;
+				case"cos":answer=Math.cos(value1);break;
+				case"e": document.getElementById('v1').value=2.7182818285;break;
+				case"Π"：document.getElementById('v2').value=3.1416926536;break;
+			}
+			document.getElementById('res').value=answer;
+		}
+
+	</script>
+</body>
+</html>
